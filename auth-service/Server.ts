@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 import AuthController, {authenticationToken} from "./controller/AuthController";
 
 const app = express();
-const mongoUrl = "mongodb://localhost:27017/Note-Collector";
+const mongoUrl = "mongodb://localhost:27017/Smart-TaskManager";
 
 mongoose
     .connect(mongoUrl)
