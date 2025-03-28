@@ -5,7 +5,10 @@ spring:
     loadbalancer:
       rule: random
     gateway:
-      routes:
+      routes: auth-service
+      uri: http://localhost:3000
+      predicates:
+        - Path=/auth-service/**
 
 eureka:
   client:
