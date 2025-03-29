@@ -5,5 +5,14 @@
  * */
 package lk.ijse.notificationservice.listener;
 
+import lk.ijse.notificationservice.dto.NotificationRequest;
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.stereotype.Component;
+
+@Component
 public class NotificationListener {
+    @RabbitListener(queues = "notificationQueue")
+    public void receiveNotification(NotificationRequest notification) {
+        System.out.println("Notification received :"+notification.getMessage());
+    }
 }
