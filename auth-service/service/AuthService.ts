@@ -1,15 +1,14 @@
 import Auth, {AuthModel} from "../model/AuthModel";
-// @ts-ignore
 import bcrypt from 'bcrypt'
 export async function SaveAuth(auth: AuthModel) {
-    const hashPassword = bcrypt.hash(auth.password, 10);
+    const hashPassword = await bcrypt.hash(auth.password, 10);
     try {
         const added = new Auth({
             userName: auth.userName,
             email: auth.email,
             password: hashPassword
         });
-        const saved = await Auth.create(added);
+        const saved = await added.save();
         console.log("User Saved :", saved);
         return true;
     } catch (err) {

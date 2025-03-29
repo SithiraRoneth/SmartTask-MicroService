@@ -1,15 +1,14 @@
-// @ts-ignore
 import express from "express";
 import {SaveAuth, verifyAuth} from "../service/AuthService";
 import {AuthModel} from "../model/AuthModel";
-// @ts-ignore
 import jwt,{Secret} from 'jsonwebtoken'
 const router = express.Router();
 
 router.post('/addUser', async (req,res)=>{
     const auth = req.body;
+    console.log(auth);
     try{
-        const added = SaveAuth(auth);
+        const added = await SaveAuth(auth);
         res.status(201).json({success:true, auth:added});
     }catch (err){
         console.log("Error during user :", err);

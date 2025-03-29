@@ -1,10 +1,10 @@
-// @ts-ignore
 import express from 'express';
 import mongoose from "mongoose";
 import AuthController, {authenticationToken} from "./controller/AuthController";
 import {Eureka} from 'eureka-js-client';
 
 const app = express();
+app.use(express.json());
 const mongoUrl = "mongodb://localhost:27017/Smart-TaskManager";
 const eurekaClient = new Eureka({
     instance:{
